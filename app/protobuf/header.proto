@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+enum RouteType {
+    SENSOR_TO_GATEWAY = 0;
+    SENSOR_TO_CLOUD = 1;
+    GATEWAY_TO_SENSOR = 2;
+    GATEWAY_TO_CLOUD = 3;
+    CLOUD_TO_SENSOR = 4;
+    CLOUD_TO_GATEWAY = 5;
+}
+
+enum TopicType {
+    TIME = 0;
+    REBOOT = 1;
+    CERTS = 2;
+    TEST_CERTS = 3;
+    FIRMWARE = 4;
+    USER_CONF = 5;
+    IMU_CONF = 6;
+    BATT_READING = 7;
+    WIFI_SCAN_READING = 8;
+    BT_SCAN_READING = 9;
+    IMU_TRAIN = 10;
+    IMU_READ = 11;
+    GNSS_RAW = 12;
+    GNSS_READING = 13;
+    ENV_RAW = 14;
+    ENV_READING = 15;
+}

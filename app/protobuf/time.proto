@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message Time {
+    int32 sec = 1;
+    int32 min = 2;
+    int32 hour = 3;
+    int32 mday = 4;
+    int32 mon = 5;
+    int32 year = 6;
+    int32 wday = 7;
+}

@@ -1,0 +1,2 @@
+Certs.public_cert max_size:2000
+Certs.private_key max_size:2000

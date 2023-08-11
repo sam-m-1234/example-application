@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+enum ImuAccOdr {
+  ISM330DHCX_XL_ODR_OFF    = 0;
+  ISM330DHCX_XL_ODR_12Hz5  = 1;
+  ISM330DHCX_XL_ODR_26Hz   = 2;
+  ISM330DHCX_XL_ODR_52Hz   = 3;
+  ISM330DHCX_XL_ODR_104Hz  = 4;
+  ISM330DHCX_XL_ODR_208Hz  = 5;
+  ISM330DHCX_XL_ODR_416Hz  = 6;
+  ISM330DHCX_XL_ODR_833Hz  = 7;
+  ISM330DHCX_XL_ODR_1666Hz = 8;
+  ISM330DHCX_XL_ODR_3332Hz = 9;
+  ISM330DHCX_XL_ODR_6667Hz = 10;
+  ISM330DHCX_XL_ODR_1Hz6   = 11; /* (low power only) */
+};
+
+enum ImuAccRange {
+  ISM330DHCX_2g   = 0;
+  ISM330DHCX_16g  = 1; /* if XL_FS_MODE = ‘1’ -> ISM330DHCX_2g */
+  ISM330DHCX_4g   = 2;
+  ISM330DHCX_8g   = 3;
+};
+
+enum ImuGyrOdr {
+  ISM330DHCX_GY_ODR_OFF    = 0;
+  ISM330DHCX_GY_ODR_12Hz5  = 1;
+  ISM330DHCX_GY_ODR_26Hz   = 2;
+  ISM330DHCX_GY_ODR_52Hz   = 3;
+  ISM330DHCX_GY_ODR_104Hz  = 4;
+  ISM330DHCX_GY_ODR_208Hz  = 5;
+  ISM330DHCX_GY_ODR_416Hz  = 6;
+  ISM330DHCX_GY_ODR_833Hz  = 7;
+  ISM330DHCX_GY_ODR_1666Hz = 8;
+  ISM330DHCX_GY_ODR_3332Hz = 9;
+  ISM330DHCX_GY_ODR_6667Hz = 10;
+};
+
+enum ImuGyrRange {
+  ISM330DHCX_250dps        = 0;
+  ISM330DHCX_4000dps       = 1;
+  ISM330DHCX_125dps        = 2;
+//   VALUE_NOT_USED0          = 3;
+  ISM330DHCX_500dps        = 4;
+//   VALUE_NOT_USED1          = 5;
+//   VALUE_NOT_USED2          = 6;
+//   VALUE_NOT_USED3          = 7;
+  ISM330DHCX_1000dps       = 8;
+//   VALUE_NOT_USED4          = 9;
+//   VALUE_NOT_USED5          = 10;
+//   VALUE_NOT_USED6          = 11;
+  ISM330DHCX_2000dps       = 12;
+};
+
+enum ImuMode {
+  TRAINING        = 0;
+  PREDICTION      = 1;
+};
+
+message ImuTrain {
+    int64 ts_msec = 1;
+    ImuAccOdr ax_odr = 2;
+    int32 num_rows = 3;
+    bytes ax_bytes = 4;
+    bytes ay_bytes = 5;
+    bytes az_bytes = 6;
+    bytes gx_bytes = 7;
+    bytes gy_bytes = 8;
+    bytes gz_bytes = 9;
+}
+
+message ImuRead {
+    int64 ts_msec = 1;
+    int32 temp_degc_x100 = 2;
+    int32 ax = 3;
+    int32 ay = 4;
+    int32 az = 5;
+    bytes mlc_out = 6;
+}
+
+message ImuConf {
+    bytes uuid_bytes = 1;
+    ImuMode mode = 2;
+    ImuAccOdr ax_odr = 3;
+    ImuAccRange ax_range = 4;
+    ImuGyrOdr gy_odr = 5;
+    ImuGyrRange gy_range = 6;
+    bytes mlc_conf = 7;
+}
+
+message ImuConfRequest {
+    bytes uuid_bytes = 1;
+}

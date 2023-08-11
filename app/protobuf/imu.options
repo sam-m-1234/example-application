@@ -1,0 +1,13 @@
+ImuTrain.ax_bytes max_size:666 fixed_length:true
+ImuTrain.ay_bytes max_size:666 fixed_length:true
+ImuTrain.az_bytes max_size:666 fixed_length:true
+ImuTrain.gx_bytes max_size:666 fixed_length:true
+ImuTrain.gy_bytes max_size:666 fixed_length:true
+ImuTrain.gz_bytes max_size:666 fixed_length:true
+
+ImuRead.mlc_out max_size:8 fixed_length:true
+
+ImuConf.uuid_bytes max_size:16 fixed_length:true
+ImuConf.mlc_conf max_size:1024
+
+ImuConfRequest.uuid_bytes max_size:16 fixed_length:true

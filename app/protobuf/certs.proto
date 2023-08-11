@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message Certs {
+    int32 public_cert_len = 1;
+    int32 private_key_len = 2;
+    string public_cert = 3;
+    string private_key = 4;
+}

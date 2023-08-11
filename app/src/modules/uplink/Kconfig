@@ -1,0 +1,22 @@
+menuconfig UPLINK
+    bool "Common helper code for Golioth MagTag Demo"
+    help
+      Build and link common code that is shared across MagTag samples.
+if UPLINK
+config UPLINK_SPI
+    bool "Handle accelerometer readings"
+    help
+      Get accel from DeviceTree and write readings to shared sensor struct
+config UPLINK_MQTT
+    bool "Process button reads"
+    help
+      Configure buttons for interrupts with callbacks
+config UPLINK_BT
+    bool "ws2812 helper functions"
+    help
+      Intialize and update LED color and state
+config UPLINK_MOCK
+    bool "2.9\" grayscale ePaper driver"
+    help
+      Hardware driver for ePaper, including text and partial writes
+endif # UPLINK

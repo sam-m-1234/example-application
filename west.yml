@@ -10,6 +10,12 @@ manifest:
       url-base: https://github.com/zephyrproject-rtos
 
   projects:
+    - name: ziota
+      path: modules/lib/ziota
+      revision: main
+      url: https://github.com/sam-m-1234/ziota-zephyr-sdk.git
+      import:
+        west-external.yml
     - name: zephyr
       remote: zephyrproject-rtos
       revision: main
@@ -19,4 +25,5 @@ manifest:
         name-allowlist:
           - cmsis      # required by the ARM port
           - hal_nordic # required by the custom_plank board (Nordic based)
-          - hal_stm32  # required by the nucleo_f302r8 board (STM32 based)
+          - nanopb
+          # - hal_stm32  # required by the nucleo_f302r8 board (STM32 based)
